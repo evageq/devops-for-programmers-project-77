@@ -1,0 +1,8 @@
+vault_pass.txt
+.terraform
+*.auto.tfvars
+*.backup
+key.*
+*.tfstate
+*.lock.hcl
+ansible_vars.json

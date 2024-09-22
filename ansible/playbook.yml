@@ -1,0 +1,40 @@
+---
+- name: Setup
+  hosts: all
+  tags: setup
+  become: true
+
+  roles:
+    - { role: geerlingguy.docker, become: true}
+
+  tasks:
+    - name: Install pip
+      apt:
+        name: python3-pip
+        update_cache: yes
+        cache_valid_time: 604800
+      become: true
+
+    - name: Install docker python lib
+      pip:
+        name: docker
+
+- hosts: all
+  become: true
+  tags: deploy
+  tasks:
+    - name: Run Redmine container
+      community.docker.docker_container:
+        image: redmine
+        name: redmine
+        state: started
+        restart: true
+        ports:
+          - "{{ app_port }}:3000"
+        env:
+          REDMINE_DB_POSTGRES: "{{ redmine_db_postgres }}"
+          REDMINE_DB_USERNAME: "{{ redmine_db_username }}"
+          REDMINE_DB_PASSWORD: "{{ redmine_db_password }}"
+          REDMINE_DB_PORT: "{{ redmine_db_port }}"
+          REDMINE_DB_DATABASE: "{{ redmine_db_database }}"
+      become: true

@@ -1,0 +1,7 @@
+vault_redmine_db_postgres: "{{ ansible_vars.db_host.value }}"
+vault_redmine_db_database: "{{ ansible_vars.db_name.value }}"
+vault_redmine_db_username: "{{ ansible_vars.db_username.value }}"
+vault_redmine_db_port: "{{ ansible_vars.db_port.value | default('6432') }}"
+vault_redmine_db_password: "{{ ansible_vars.db_password.value }}"
+
+vault_inventory_hostname: "{{ ansible_vars.inventory_hostname.value | default('www.evage.ru') }}"
