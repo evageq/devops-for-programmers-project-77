@@ -9,3 +9,5 @@ make deploy
 
 `make destroy` to clear infrustructure.
 Change `terraform/backend.tf` to your own cloud.
+
+App is on https://www.evage.ru
