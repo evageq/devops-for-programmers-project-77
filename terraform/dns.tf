@@ -1,6 +1,6 @@
 resource "yandex_dns_zone" "dns_zone" {
-  name = "hexlet"
-  zone = "evage.ru."
+  name   = "hexlet"
+  zone   = "evage.ru."
   public = true
 }
 
